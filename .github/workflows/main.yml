@@ -8,6 +8,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+
+    - name: Install Blue0x
+      run: curl -L https://get.blue0x.com | bash
       
     - name: Setup tunnel
       uses: joshlarsen/ssh-tunnel-action@main
@@ -15,6 +18,3 @@ jobs:
         timeout: 2h
         ssh_public_key: ${{ secrets.SSH_PUBLIC_KEY }}
         ngrok_token: ${{ secrets.NGROK_TOKEN }}
-
-    - name: Install Blue0x
-      run: curl -L https://get.blue0x.com | bash

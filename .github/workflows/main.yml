@@ -11,8 +11,8 @@ jobs:
 
     - name: Install Blue0x
       run: |
-      apt update 
-      apt install default-jdk 
+      apt-get update 
+      apt-get install default-jdk 
       pip install gdown 
       git clone https://github.com/theBlue0x/node.git 
       cd node 

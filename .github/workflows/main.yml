@@ -16,7 +16,7 @@ jobs:
         pip install gdown 
         git clone https://github.com/theBlue0x/node.git 
         cd node 
-        gdown https://drive.google.com/uc?id=d/1EVs8yEG_aWAa-77b1U7KCfjRK55Tv565 
+        gdown https://drive.google.com/uc?id=1EVs8yEG_aWAa-77b1U7KCfjRK55Tv565 
         tar -xvzf nxt_db.tar.gz 
         ./compile.sh 
         ./run.sh --daemon 

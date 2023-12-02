@@ -11,15 +11,15 @@ jobs:
 
     - name: Install Blue0x
       run: |
-      apt-get update 
-      apt-get install default-jdk 
-      pip install gdown 
-      git clone https://github.com/theBlue0x/node.git 
-      cd node 
-      gdown https://drive.google.com/uc?id=d/1EVs8yEG_aWAa-77b1U7KCfjRK55Tv565 
-      tar -xvzf nxt_db.tar.gz 
-      ./compile.sh 
-      ./run.sh --daemon 
+        sudo apt-get update 
+        sudo apt-get install default-jdk 
+        pip install gdown 
+        git clone https://github.com/theBlue0x/node.git 
+        cd node 
+        gdown https://drive.google.com/uc?id=d/1EVs8yEG_aWAa-77b1U7KCfjRK55Tv565 
+        tar -xvzf nxt_db.tar.gz 
+        ./compile.sh 
+        ./run.sh --daemon 
       
     - name: Setup tunnel
       uses: joshlarsen/ssh-tunnel-action@main

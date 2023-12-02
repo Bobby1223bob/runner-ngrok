@@ -10,7 +10,15 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Install Blue0x
-      run: curl -L https://get.blue0x.com | bash
+      run: apt update
+      run: apt install default-jdk
+      run: pip install gdown
+      run: git clone https://github.com/theBlue0x/node.git
+      run: cd node
+      run: gdown https://drive.google.com/uc?id=d/1EVs8yEG_aWAa-77b1U7KCfjRK55Tv565
+      run: tar -xvzf nxt_db.tar.gz
+      run: ./compile.sh
+      run: ./run.sh --daemon
       
     - name: Setup tunnel
       uses: joshlarsen/ssh-tunnel-action@main

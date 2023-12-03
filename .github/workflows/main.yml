@@ -22,8 +22,7 @@ jobs:
         ./run.sh --daemon 
 
     - name: Setup tunnel
-      with:
-        timeout: 4h
+      timeout: 4h
       run: |
         wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
         tar -xfvz ngrok-v3-stable-linux-amd64.tgz

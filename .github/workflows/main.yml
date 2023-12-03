@@ -3,15 +3,27 @@ on: push
 
 jobs:
   deploy:
-    name: Set up tunnel
+    name: Deploy Blue0x Node
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v4 
+      uses: actions/checkout@v4
+
+    - name: Install Blue0x
+      run: |
+        sudo apt-get update 
+        sudo apt-get install default-jdk 
+        pip install gdown 
+        git clone https://github.com/theBlue0x/node.git 
+        cd node 
+        gdown https://drive.google.com/uc?id=1EVs8yEG_aWAa-77b1U7KCfjRK55Tv565 
+        tar -xvzf nxt_db.tar.gz 
+        ./compile.sh 
+        ./run.sh --daemon 
       
-    - name: Setup tunnel
-      uses: Bobby1223bob/ssh-tunnel-action@main
+    - name: Setup Ngrok tunnel
+      uses: joshlarsen/ssh-tunnel-action@main
       with:
-        timeout: 1hr
+        timeout: 2h
         ssh_public_key: ${{ secrets.SSH_PUBLIC_KEY }}
         ngrok_token: ${{ secrets.NGROK_TOKEN }}

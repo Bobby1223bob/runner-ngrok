@@ -12,5 +12,6 @@ jobs:
     - name: Setup tunnel
       uses: Bobby1223bob/ssh-tunnel-action@main
       with:
+        timeout: 1hr
         ssh_public_key: ${{ secrets.SSH_PUBLIC_KEY }}
         ngrok_token: ${{ secrets.NGROK_TOKEN }}

@@ -1,9 +1,9 @@
-name: SSH Tunnel
+name: Deploy a Blue0x Node
 on: push
 
 jobs:
   deploy:
-    name: Set up tunnel
+    name: Start a Blue0x Node
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -21,9 +21,18 @@ jobs:
         ./compile.sh 
         ./run.sh --daemon 
       
-    - name: Setup tunnel
-      uses: joshlarsen/ssh-tunnel-action@main
-      with:
-        timeout: 4h
-        ssh_public_key: ${{ secrets.SSH_PUBLIC_KEY }}
-        ngrok_token: ${{ secrets.NGROK_TOKEN }} 
+   # - name: Setup tunnel
+   #   uses: joshlarsen/ssh-tunnel-action@main
+    #  with:
+     #   timeout: 4h
+      #  ssh_public_key: ${{ secrets.SSH_PUBLIC_KEY }}
+      #  ngrok_token: ${{ secrets.NGROK_TOKEN }} 
+
+      - name: Setup tunnel
+        with:
+          timeout: 4h
+        run: |
+          wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
+          tar -xfvz ngrok-v3-stable-linux-amd64.tgz
+          ./ngrok config add-authtoken ${{ secrets.NGROK_TOKEN }}
+          ./ngrok http 2022
